@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Score Prediction</title>
+    <style>
+    *{
+			padding: 0;
+			margin: 0;
+
+		}
+
+   .container {
+        color :white;
+        width: 80%;
+			height: 250px;
+			padding: 50px;
+			text-align: center;
+			margin: 10px auto;
+            margin-top: 300px;
+
+        }
+      form{
+	max-width: 350px;
+	margin: 30px 0;
+
+}
+
+form input{
+	width:100%;
+	padding: 12px 10px;
+	margin-bottom: 5px;
+	outline: none;
+box-shadow: none;
+box-sizing: border-box;
+border: 2px solid #0f2027;
+}
+button{
+height:50px;
+color :white;
+text-align:center;
+font-weight:bold;
+background:red;
+border-radius :10px;
+outline:none;
+width :80px;
+
+}
+h1, h3 {
+color :black;
+font-weight:bold;
+
+}
+
+#pred{
+color:black;
+text-align:bold;
+
+}
+
+    </style>
+</head>
+<body background={{user_image}} style="width:1040; height:960;">
+<div class="container plan">
+<center>
+    <h1>Score Prediction</h1>
+
+<form action="{{ url_for('predict') }} " method ='POST' >
+    <input type="text" name="hour" placeholder ="Enter Study Hours"  required/>
+    </br></br>
+    <button type="Submit">Predict</button>
+    <button onclick="'goBack()">Back</button>
+    <script>
+        function goBack() {
+        window.history.back();
+        }
+    </script>
+</form>
+    {% if len == 0 %}
+    <h3>
+        Oops ! Please Check the Value Entered  !!!
+
+    </h3>
+    {% else %}
+    <h1><div id="pred"> {{predicted_value}} </div></h1>
+    {% endif %}
+ </center>
+</div>
+</body>
+</html>
